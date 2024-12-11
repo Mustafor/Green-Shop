@@ -16,7 +16,7 @@ const Input:React.FC<InputType> = ({name, placeholder, extraClass, type}) => {
     <label className='relative'>
       <input className={`${extraClass} w-full pl-[14px] py-3 rounded-[5px] outline-none focus:border-[#46A358] border-[1px] border-[#EAEAEA]`} required type={type == "password" ? (showPass ? "text" : "password") : type} placeholder={placeholder} name={name}/>
       {type == "password" && 
-        <div onClick={() => setShowPass(!showPass)} className={`${showPass ? "" : "hidden" }`}>
+        <div onClick={() => setShowPass(!showPass)} className="flex items-center justify-center absolute top-0 right-[10px] cursor-pointer">
           <button type='button' className={`${showPass ? "" : "hidden" }`}><HidePassIcon/></button>
           <button type='button' className={`${showPass ? "hidden" : "" }`}><ShowPassIcon/></button>
         </div>

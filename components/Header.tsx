@@ -1,5 +1,5 @@
 "use client"
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useContext, useState } from 'react'
 import Button from './Button'
 import Modal from './Modal'
 import LoginInputs from './LoginInput/LoginInputs'
@@ -9,8 +9,10 @@ import ForgotPassword from './ForgotPassword/ForgotPassword'
 import ResetPassword from './ResetPassword/ResetPassword'
 import { instance } from '@/hook/instance'
 import { KorzinaIcon, LoginIcon, LogoIcon, SearchIcon } from '@/public/icon/Icon'
+import { Context } from '@/context/AuthContext'
 
 const Header = () => {
+  const {setToken} = useContext(Context)
   const [registerEmail, setRegisterEmail] = useState<string>("")
   const [loginModal, setLoginModal] = useState<boolean>(false)
   const [isLogin, setIsLogin] = useState<"login" | "register" | "verifyRegister" | "forgotPassword" | "reset-password">("login")
@@ -22,8 +24,9 @@ const Header = () => {
         password:(e.target as HTMLFormElement).password.value,
         usernameoremail:(e.target as HTMLFormElement).email.value
       }
-      instance().post("/login", data).then(() => {
-        setLoginModal(false)  // Close the modal after successful login
+      instance().post("/login", data).then((res) => {
+        setLoginModal(false)
+        setToken(res.data.access_token)
       })
     }
     else if(isLogin == "register"){
