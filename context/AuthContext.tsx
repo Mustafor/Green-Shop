@@ -1,25 +1,29 @@
 "use client"
-import { createContext, ReactNode, SetStateAction, useState } from "react"
+import React, { ReactNode, SetStateAction, createContext, useState, useEffect } from "react"
 
 interface ContextType {
-  token: string | null
-  setToken: React.Dispatch<SetStateAction<null | string>>
-  cart: any[]
-  setCart: React.Dispatch<SetStateAction<any[]>>
+    token: string | null
+    setToken: React.Dispatch<SetStateAction<null | string>>
 }
 
 export const Context = createContext<ContextType>({
-  token: null,
-  setToken: () => "",
-  cart: [],
-  setCart: () => []
+    token: null,
+    setToken: () => ""
 })
 
 export const AuthContext: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [token, setToken] = useState<string | null>(localStorage.getItem("token") || null)
-  const [cart, setCart] = useState<any[]>([])
-  
-  if (token) localStorage.setItem("token", token)
+    const [token, setToken] = useState<string | null>(localStorage.getItem("token") || null)
 
-  return <Context.Provider value={{ token, setToken, cart, setCart }}>{children}</Context.Provider>
+    useEffect(() => {
+        if(token){
+            localStorage.setItem("token", token)
+        } 
+        else{
+            localStorage.removeItem("token")
+        }
+    }, [token])
+
+    return (
+        <Context.Provider value={{ token, setToken }}>{children}</Context.Provider>
+    )
 }

@@ -17,7 +17,7 @@ const Modal: React.FC<ModalType> = ({ isOpen, setIsOpen, width, children }) => {
   }
 
   return (
-    <div onClick={handleClickOutside} id="wrapper" className={`fixed inset-0 backdrop-blur bg-[#00000029] flex items-center justify-center ${!isOpen && "scale-0"}`}>
+    <div onClick={handleClickOutside} id="wrapper" className={`fixed inset-0 duration-300 backdrop-blur bg-[#00000029] flex items-center justify-center ${!isOpen && "scale-0"}`}>
       <div style={{ width: `${width}px` }} className='absolute p-5 bg-white rounded-md' onClick={(e) => e.stopPropagation()}>
         <button onClick={() => setIsOpen(false)} className='absolute top-[11px] right-3'>
           <CloseIcon />

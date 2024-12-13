@@ -215,7 +215,7 @@ function BasketIcon() {
 </g>
 <defs>
 <clipPath id="clip0_4_201">
-<rect width="20" height="20" fill="white"/>
+<rect width="20" height="20" fill="currentColor"/>
 </clipPath>
 </defs>
 </svg>
@@ -223,4 +223,4 @@ function BasketIcon() {
     )
 }
 
-export { HidePassIcon, ShowPassIcon, CloseIcon, LoginIcon, LogoIcon, SearchIcon, KorzinaIcon, ArrowIcon, RightIcon, LocationIcon, MessageIcon, PhoneIcon, FaceebookIcon, InstagramIcon, TwitterIcon, LinkedinIcon, UnionIcon, CardsIcon, LikeIcon, BasketIcon }
+export { HidePassIcon, ShowPassIcon, CloseIcon, LoginIcon, LogoIcon, SearchIcon, KorzinaIcon, ArrowIcon, RightIcon, LocationIcon, MessageIcon, PhoneIcon, FaceebookIcon, InstagramIcon, TwitterIcon, LinkedinIcon, UnionIcon, CardsIcon, LikeIcon, BasketIcon,  }

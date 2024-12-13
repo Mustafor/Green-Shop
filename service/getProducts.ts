@@ -26,27 +26,32 @@ interface ParamsType {
     limit:number
     cetegory:string | null
     tags:string | null
+    min_price:number
+    max_price:number
+    size:string | null
 }
 
-export const getProducts = (categoryName: string | null, tags: string | null, page: number, setTotalPage: React.Dispatch<SetStateAction<number>>) => {
+export const getProducts = (categoryName: string | null, tags: string | null, page: number, setTotalPage: React.Dispatch<SetStateAction<number>>, fullPrice:number[], size:string | null) => {
     const { token } = useContext(Context)
     const params: ParamsType = {
         page,
         limit: 6,  
         cetegory: categoryName == "All" ? null : categoryName, 
-        tags
+        tags,
+        min_price:fullPrice[0],
+        max_price:fullPrice[1],
+        size
     }
 
     const { data = [] } = useQuery({
-        queryKey: ['products', categoryName, tags, page], 
+        queryKey: ['products', categoryName, tags, page, fullPrice, size], 
         enabled: true,  
         queryFn: () => instance().get("/products", {
-                    headers: token ? { "Authorization": `Bearer ${token}` } : {},
-                    params: params,
-                })
-                .then((res) => {
-                    setTotalPage(res.data.total_count)
-                    return res.data.products
-                })})
+            headers: token ? { "Authorization": `Bearer ${token}` } : {},
+            params: params,
+        }).then((res) => {
+            setTotalPage(res.data.total_count)
+             return res.data.products
+        })})
         return data
 }

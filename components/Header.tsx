@@ -8,11 +8,15 @@ import VerifyRegister from './VerifyRegister/VerifyRegister'
 import ForgotPassword from './ForgotPassword/ForgotPassword'
 import ResetPassword from './ResetPassword/ResetPassword'
 import { instance } from '@/hook/instance'
-import { KorzinaIcon, LoginIcon, LogoIcon, SearchIcon } from '@/public/icon/Icon'
+import { BasketIcon, LikeIcon, LoginIcon, LogoIcon, SearchIcon } from '@/public/icon/Icon'
 import { Context } from '@/context/AuthContext'
+import { toast } from 'react-toastify'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { Badge } from '@nextui-org/badge'
 
 const Header = () => {
-  const {setToken} = useContext(Context)
+  const querClinet = useQueryClient()
+  const {setToken, token} = useContext(Context)
   const [registerEmail, setRegisterEmail] = useState<string>("")
   const [loginModal, setLoginModal] = useState<boolean>(false)
   const [isLogin, setIsLogin] = useState<"login" | "register" | "verifyRegister" | "forgotPassword" | "reset-password">("login")
@@ -27,6 +31,10 @@ const Header = () => {
       instance().post("/login", data).then((res) => {
         setLoginModal(false)
         setToken(res.data.access_token)
+        querClinet.invalidateQueries({queryKey:['products']})
+        toast.success("Login successfuly!")
+      }).catch((err) => {
+        toast.error("Login failed. Try again")
       })
     }
     else if(isLogin == "register"){
@@ -72,6 +80,27 @@ const Header = () => {
     }
   }
 
+  const getLikeList = async () => {
+    const data = await instance().get(`/wishlist`, {
+      headers:{"Authorization" : `Bearer ${token}`},
+      params:{page:1, limit:1000
+      }}).then(res => res.data.ProductId)
+    return data
+  }
+
+  const {data:likeProducts = []} = useQuery({
+     queryKey:['liked_list'],
+     queryFn:() => token ? getLikeList() : []
+  })
+
+  const {data: BasketProducts = []} = useQuery({
+    queryKey: ['basket_list'],
+    queryFn: () => instance().get(`/basket`, {
+      headers: token ? {"Authorization":`Bearer ${token}`} : {},
+      params:{page:1, limit: 10000}
+    }).then(res => res.data.ProductId)
+  })
+
   return (
     <header className='px-[120px] py-[25px]'>
       <div className='flex items-center  justify-between'>
@@ -82,24 +111,31 @@ const Header = () => {
         </div>
         <ul className='flex items-center gap-[50px]'>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="#">Home</a>
+            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/">Home</a>
           </li>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="#">Shop</a>
+            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/shop">Shop</a>
           </li>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="#">Plant Care</a>
+            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/planet-care">Plant Care</a>
           </li>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="#">Blogs</a>
+            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/blog">Blogs</a>
           </li>
         </ul>
         <div className='flex items-center gap-[30px]'>
           <button>
           <SearchIcon/>  
-          </button>          
-          <button>
-          <KorzinaIcon/>
+          </button>  
+          <button className='text-red-500'>
+          <Badge color="success" className='text-white' content={token ? (likeProducts.length ? likeProducts.length : "") : ""}>
+            <LikeIcon/>
+          </Badge>   
+          </button>       
+          <button className='text-green-500'>
+          <Badge color="success" className='text-white' content={token ? (BasketProducts.length ? BasketProducts.length : "") : ""}>
+            <BasketIcon/>
+          </Badge>
           </button>
       <Button onClick={() => setLoginModal(true)} title="Login" type="button" leftIcon={<LoginIcon />} />
       <Modal isOpen={loginModal} setIsOpen={setLoginModal} width={500}>
