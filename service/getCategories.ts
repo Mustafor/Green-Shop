@@ -1,11 +1,11 @@
 "use client"
 
 import { instance } from "@/hook/instance"
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query"
 
 export interface CategoryType {
-  category_id: string | null;
-  category_name: string;
+  category_id: string | null
+  category_name: string
 }
 
 export const getCategories = () => {

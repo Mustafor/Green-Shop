@@ -1,12 +1,32 @@
 "use client"
 import Footer from '@/components/Footer'
-import React from 'react'
-
+import ProductCard from '@/components/ProductCard'
+import debounce from '@/hook/debounce'
+import { ProductsType, getProducts } from '@/service/getProducts'
+import React, { useState } from 'react'
 const Shop = () => {
+  const [size, _setSize] = useState<string | null>(null)
+  const [price, _setPrice] = useState<number[] | number>([39, 1230])
+  const [categoryName, _setCategoryName] = useState<string | null>(null)
+  const [tags, _setTags] = useState<string | null>(null)
+  const [page, _setPage] = useState<number>(1)
+  const [totalPage, setTotalPage] = useState(10)
+  const fullPrice = debounce(price, 1000)
+  
+  const products: ProductsType[] = getProducts(categoryName, tags, page, setTotalPage, fullPrice, size)
+  
   return (
-    <div>
-        <Footer/>
+    <>
+      <div className="px-[120px] mt-[50px]">
+      <div className="flex flex-col">
+        <h2 className="font-bold text-[#46A358] text-[17px]">Releted Products</h2>
+      </div>
+      <div className="flex flex-wrap gap-4 mb-[120px] w-full">
+        {products ? (products.map((item: ProductsType) => (<ProductCard item={item} key={item.product_id} />))) : (<h1 className="text-[40px] text-[#46A358] text-center mt-[100px] font-bold">No Flowers</h1>)}</div>
     </div>
+    <Footer/>
+
+    </>
   )
 }
 

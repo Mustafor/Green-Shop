@@ -6,10 +6,11 @@ import { Pagination } from "@nextui-org/pagination"
 import Image from "next/image"
 import React, { useState } from "react"
 import ProductCard from "@/components/ProductCard"
-import { ArrowIcon, RightIcon } from "@/public/icon/Icon"
+import { ArrowIcon, Ellipse1, Ellipse2, RightIcon } from "@/public/icon/Icon"
 import Footer from "@/components/Footer"
 import { Slider } from "@nextui-org/slider"
 import debounce from "@/hook/debounce"
+import Carusel from "@/components/Carusel/page"
 
 export default function Home() {
   const [categoryName, setCategoryName] = useState<string | null>(null)
@@ -25,21 +26,8 @@ export default function Home() {
   return (
     <>
       <main>
-        <section className="px-[120px]">
-          <div className="flex justify-between px-[40px] bg-[#F5F5F580]">
-            <div className="w-[557px] mt-[68px]">
-              <strong className="font-medium text-[18px] text-[#3D3D3D] mb-[7px]">Welcome to GreenShop</strong>
-              <h2 className="font-extrabold mb-[5px] leading-[70px] text-[#3D3D3D] text-[70px]">
-                Let’s Make A
-                Better <span className="text-[#46A358]">PLANET</span>
-              </h2>
-              <p className="text-[14px] font-medium tetx-[#3D3D3D] mb-[44px]">We are an online plant shop offering a wide range of cheap and trendy plants. Use our plants to create an unique Urban Jungle. Order your favorite plants!</p>
-              <Button title="SHOP NOW" extraStyle="!w-[140px]" type="submit" />
-            </div>
-            <Image style={{ width: "auto", height: "auto" }} priority src={"/images/img 1.png"} alt="Img" width={518} height={518} />
-          </div>
-        </section>
-        <section className="flex px-[120px] gap-[50px] py-[50px] justify-between">
+        <Carusel/>
+        <section className="flex px-[120px] gap-[50px] mt-[50px] justify-between">
           <ul className="w-[20%] bg-[#FBFBFB]" >
             <h2 className="text-[18px]  text-[#3D3D3D] px-[18px] py-[14px]">Categories</h2>
             {[{ category_name: "All", category_id: null }, ...categories].map((item: CategoryType) => (
@@ -56,9 +44,9 @@ export default function Home() {
             </div>
             <ul>
               <strong className="text-[18px] px-[18px] py-[7px] text-[#3D3D3D]">Size</strong>
-              <li className="cursor-pointer px-[30px] py-[15px]" onClick={(e) => setSize("Small")}>Small</li>
-              <li className="cursor-pointer px-[30px] py-[15px]" onClick={(e) => setSize("Medium")}>Medium</li>
-              <li className="cursor-pointer px-[30px] py-[15px]" onClick={(e) => setSize("Large")}>Large</li>
+              <li className="cursor-pointer px-[30px] py-[15px] hover:text-[#46A358] duration-300" onClick={(e) => setSize("Small")}>Small</li>
+              <li className="cursor-pointer px-[30px] py-[15px] hover:text-[#46A358] duration-300" onClick={(e) => setSize("Medium")}>Medium</li>
+              <li className="cursor-pointer px-[30px] py-[15px] hover:text-[#46A358] duration-300" onClick={(e) => setSize("Large")}>Large</li>
             </ul>
           </ul>
           <div className="w-[80%]">
@@ -87,7 +75,7 @@ export default function Home() {
             size="lg"
             color="success"
             initialPage={page}
-            total={totalPage / 6}
+            total={totalPage / 3}
           />
         </div>
         <section className="px-[120px] py-[94px]">
@@ -116,51 +104,59 @@ export default function Home() {
             <p className="text-[14px] mb-[35px] text-[#727272]">We are an online plant shop offering a wide range of cheap and trendy plants. </p>
           </div>
           <ul className="flex justify-between gap-[44px]">
-            <li className="w-[368px] bg-[#FBFBFB]">
+            <li className="w-[368px] bg-[#FBFBFB] hover:shadow-2xl duration-300">
               <Image style={{ width: "auto", height: "auto" }} src={"/images/poast1.png"} alt="img" width={268} height={195} />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px]">September 12  I Read in 6 minutes</a>
+                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300">September 12  I Read in 6 minutes</a>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">Cactus & Succulent Care Tips</strong>
                 <span className="text-[14px] block text-[#727272] mb-[9px]">Cacti are succulents are easy care plants for any home or patio. </span>
                 <a className="flex items-center hover:text-green-500 duration-300 gap-[3px]" href="#">
                   <span>Read More</span>
-                  <RightIcon />
+                  <span className="mt-[6px]">
+                  <RightIcon/>
+                  </span>
                 </a>
               </div>
             </li>
-            <li className="w-[368px] bg-[#FBFBFB]">
+            <li className="w-[368px] bg-[#FBFBFB] hover:shadow-2xl duration-300">
               <Image style={{ width: "auto", height: "auto" }} src={"/images/poas2.png"} alt="img" width={268} height={195} />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px]">September 13  I Read in 2 minutes</a>
+                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300">September 13  I Read in 2 minutes</a>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">Top 10 Succulents for Your Home</strong>
                 <span className="text-[14px] block text-[#727272] mb-[9px]">Best in hanging baskets. Prefers medium to high light.</span>
                 <a className="flex items-center hover:text-green-500 duration-300 gap-[3px]" href="#">
                   <span>Read More</span>
-                  <RightIcon />
+                  <span className="mt-[6px]">
+                  <RightIcon/>
+                  </span>
                 </a>
               </div>
             </li>
-            <li className="w-[368px] bg-[#FBFBFB]">
+            <li className="w-[368px] bg-[#FBFBFB] hover:shadow-2xl duration-300">
               <Image style={{ width: "auto", height: "auto" }} src={"/images/poast3.png"} alt="img" width={268} height={195} />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px]">September 15  I Read in 3 minutes</a>
+                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300">September 15  I Read in 3 minutes</a>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">Cacti & Succulent Care Tips</strong>
                 <span className="text-[14px] block text-[#727272] mb-[9px]">Cacti and succulents thrive in containers and because most are. </span>
                 <a className="flex items-center hover:text-green-500 duration-300 gap-[3px]" href="#">
                   <span>Read More</span>
-                  <RightIcon />
+                  <span className="mt-[6px]">
+                  <RightIcon/>
+                  </span>
                 </a>
               </div>
             </li>
-            <li className="w-[368px] bg-[#FBFBFB]">
+            <li className="w-[368px] bg-[#FBFBFB] hover:shadow-2xl duration-300">
               <Image style={{ width: "auto", height: "auto" }} src={"/images/poast4.png"} alt="img" width={268} height={195} />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px]">September 15  I Read in 2 minutes</a>
+                <a href="#" className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300">September 15  I Read in 2 minutes</a>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">Best Houseplants Room by Room</strong>
                 <span className="text-[14px] block text-[#727272] mb-[9px]">The benefits of houseplants are endless. In addition to.. </span>
                 <a className="flex items-center hover:text-green-500 duration-300 gap-[3px]" href="#">
                   <span>Read More</span>
-                  <RightIcon />
+                  <span className="mt-[6px]">
+                  <RightIcon/>
+                  </span>
                 </a>
               </div>
             </li>

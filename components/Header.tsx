@@ -13,12 +13,15 @@ import { Context } from '@/context/AuthContext'
 import { toast } from 'react-toastify'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Badge } from '@nextui-org/badge'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const Header = () => {
   const querClinet = useQueryClient()
   const {setToken, token} = useContext(Context)
   const [registerEmail, setRegisterEmail] = useState<string>("")
   const [loginModal, setLoginModal] = useState<boolean>(false)
+  const router = useRouter()
   const [isLogin, setIsLogin] = useState<"login" | "register" | "verifyRegister" | "forgotPassword" | "reset-password">("login")
 
   function loginSubmit(e:FormEvent<HTMLFormElement>){
@@ -95,10 +98,10 @@ const Header = () => {
 
   const {data: BasketProducts = []} = useQuery({
     queryKey: ['basket_list'],
-    queryFn: () => instance().get(`/basket`, {
-      headers: token ? {"Authorization":`Bearer ${token}`} : {},
+    queryFn: () => token ? instance().get(`/basket`, {
+      headers:{"Authorization":`Bearer ${token}`},
       params:{page:1, limit: 10000}
-    }).then(res => res.data.ProductId)
+    }).then(res => res.data.ProductId) : []
   })
 
   return (
@@ -111,16 +114,16 @@ const Header = () => {
         </div>
         <ul className='flex items-center gap-[50px]'>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/">Home</a>
+            <Link className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-[#46A358] hover:border-b-[#46A358] duration-300' href={"/"}>Home</Link>
           </li>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/shop">Shop</a>
+            <Link className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-[#46A358] hover:border-b-[#46A358] duration-300' href={"/shop"}>Shop</Link>
           </li>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/planet-care">Plant Care</a>
+            <Link className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-[#46A358] hover:border-b-[#46A358] duration-300' href={"/planet-care"}>Plant Care</Link>
           </li>
           <li>
-            <a className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-black hover:border-b-[#46A358] duration-300' href="/blog">Blogs</a>
+            <Link className='font-medium text-[16px] text-[#3D3D3D] border-b-[3px] border-b-transparent hover:border-b-[3px] block hover:text-[#46A358] hover:border-b-[#46A358] duration-300' href={"/blog"}>Blogs</Link>
           </li>
         </ul>
         <div className='flex items-center gap-[30px]'>
@@ -132,7 +135,7 @@ const Header = () => {
             <LikeIcon/>
           </Badge>   
           </button>       
-          <button className='text-green-500'>
+          <button onClick={() => router.push("/shop/shopping-cart")} className='text-green-500'>
           <Badge color="success" className='text-white' content={token ? (BasketProducts.length ? BasketProducts.length : "") : ""}>
             <BasketIcon/>
           </Badge>
@@ -154,6 +157,7 @@ const Header = () => {
       </Modal>
       </div>
       </div>
+      <span className='border-b-[2px] border-b-[#46A35880] w-[1140px] block mt-[25px]'></span>
     </header>
   )
 }

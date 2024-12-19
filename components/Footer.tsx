@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="px-[120px] mt-[100px]">
     <div className="bg-[#FBFBFB] flex gap-[2px]">
       <ul className="flex items-center px-[25px] py-[25px] gap-[30px]">
-        <li className="w-[204px]">
+        <li className="w-[204px] border-r-[2px] border-r-[#46A3581A]">
           <div>
           <Image style={{width:"auto", height:"auto"}} src={"/images/frame.png"} alt="photo" width={61} height={46}/>
           <Image style={{width:"auto", height:"auto"}} src={"/images/frame1.png"} alt="photo" width={55} height={48}/>
@@ -18,7 +18,7 @@ const Footer = () => {
             <p className="text-[14px] text-[#727272]">We are an online plant shop offering a wide range of cheap and trendy plants.</p>
           </div>
         </li>
-        <li className="w-[204px]">
+        <li className="w-[204px] border-r-[2px] border-r-[#46A3581A]">
           <Image style={{width:"auto", height:"auto"}} src={"/images/frame2.png"} alt="photo" width={55} height={48}/>
           <div>
             <strong className="text-[17px] mt-[17px] font-bold text-[#3D3D3D] mb-[9px]">Garden Care</strong>
@@ -48,16 +48,16 @@ const Footer = () => {
       </a>
         <div className="w-[176px] flex items-center gap-[9px]">
           <LocationIcon/>
-          <span className="text-[14px] text-[#3D3D3D]">70 West Buckingham Ave.
-          Farmingdale, NY</span>
+          <a href='#' className="text-[14px] text-[#3D3D3D] hover:text-[#46A358] duration-300">70 West Buckingham Ave.
+          Farmingdale, NY</a>
         </div>
         <div className="flex items-center gap-[10px]">
           <MessageIcon/>
-          <span className="text-[14px] text-[#3D3D3D]">contact@greenshop.com</span>
+          <a href='#' className="text-[14px] text-[#3D3D3D] hover:text-[#46A358] duration-300">contact@greenshop.com</a>
         </div>
         <div className="flex items-center gap-[8px]">
           <PhoneIcon/>
-          <a className="text-[14px] text-[#3D3D3D]" href="tel:8801911717490">+88 01911 717 490</a>
+          <a className="text-[14px] text-[#3D3D3D] hover:text-[#46A358] duration-300" href="tel:8801911717490">+88 01911 717 490</a>
         </div>
     </div>
     <div className="bg-[#FBFBFB] px-[23px] py-[32px] flex gap-[173px]">
