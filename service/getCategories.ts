@@ -1,6 +1,6 @@
 "use client"
 
-import { instance } from "@/hook/instance"
+import { instance } from "@/hook/useInstance"
 import { useQuery } from "@tanstack/react-query"
 
 export interface CategoryType {

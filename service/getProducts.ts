@@ -1,6 +1,6 @@
 "use client"
 import { Context } from "@/context/AuthContext"
-import { instance } from "@/hook/instance"
+import { instance } from "@/hook/useInstance"
 import { useQuery } from "@tanstack/react-query"
 import { SetStateAction, useContext } from "react"
 

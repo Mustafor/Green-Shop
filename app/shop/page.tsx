@@ -1,7 +1,7 @@
 "use client"
 import Footer from '@/components/Footer'
 import ProductCard from '@/components/ProductCard'
-import debounce from '@/hook/debounce'
+import debounce from '@/hook/useDebounce'
 import { ProductsType, getProducts } from '@/service/getProducts'
 import React, { useState } from 'react'
 const Shop = () => {

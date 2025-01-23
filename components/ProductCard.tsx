@@ -5,7 +5,7 @@ import { ProductsType } from '@/service/getProducts'
 import Image from 'next/image'
 import { Context } from '@/context/AuthContext'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { instance } from '@/hook/instance'
+import { instance } from '@/hook/useInstance'
 import { useRouter } from 'next/navigation'
 
 const ProductCard: React.FC<{ item: ProductsType }> = ({ item }) => {

@@ -2,7 +2,7 @@
 import CaruselShop from '@/components/CaruselShop/page'
 import Footer from '@/components/Footer'
 import { Context } from '@/context/AuthContext'
-import { instance } from '@/hook/instance'
+import { instance } from '@/hook/useInstance'
 import { CartLikeIcon, FaceebookShareIcon, LinkedinShareIcon, MessageShareIcon, SearchIcon, StarIcon, StartNoActiveIcon, TwitterShareIcon } from '@/public/icon/Icon'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
