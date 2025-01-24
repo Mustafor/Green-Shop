@@ -1,15 +1,15 @@
-"use client"
-import CaruselShop from '@/components/CaruselShop/page'
-import Footer from '@/components/Footer'
-import React from 'react'
+"use client";
+import CaruselShop from "@/components/CaruselShop/page";
+import Footer from "@/components/Footer";
+import React from "react";
 
 const Blog = () => {
   return (
     <div>
-      <CaruselShop/>
-        <Footer/>
+      <CaruselShop />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

@@ -1,24 +1,24 @@
-"use client"
-import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import Hero from '../Hero'
-import "swiper/css"
-import "./index.css"
+"use client";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Hero from "../Hero";
+import "swiper/css";
+import "./index.css";
 
 export default function Carusel() {
   return (
     <>
-    <Swiper className="mySwipper">
+      <Swiper className="mySwipper">
         <SwiperSlide>
-            <Hero/>
+          <Hero />
         </SwiperSlide>
         <SwiperSlide>
-            <Hero/>
+          <Hero />
         </SwiperSlide>
         <SwiperSlide>
-            <Hero/>
+          <Hero />
         </SwiperSlide>
-    </Swiper>
+      </Swiper>
     </>
-  )
+  );
 }

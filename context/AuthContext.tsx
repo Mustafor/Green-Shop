@@ -34,7 +34,6 @@ export const AuthContext: React.FC<{ children: ReactNode }> = ({
   const [isBasket, setIsBasket] = useState<boolean>(false);
 
   useEffect(() => {
-    // Check if we are in a browser environment
     if (typeof window !== "undefined") {
       const storedToken = localStorage.getItem("token");
       const storedCount = localStorage.getItem("count");

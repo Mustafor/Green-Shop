@@ -33,12 +33,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthContext>
-        <ReactQueryProvider>
-          <Header />
-          {children}
-        </ReactQueryProvider>
+          <ReactQueryProvider>
+            <Header />
+            {children}
+          </ReactQueryProvider>
         </AuthContext>
-
       </body>
     </html>
   );

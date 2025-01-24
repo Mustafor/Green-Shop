@@ -89,19 +89,19 @@ export default function Home() {
               </strong>
               <li
                 className="cursor-pointer px-[30px] py-[15px] hover:text-[#46A358] duration-300"
-                onClick={(e) => setSize("Small")}
+                onClick={() => setSize("Small")}
               >
                 Small
               </li>
               <li
                 className="cursor-pointer px-[30px] py-[15px] hover:text-[#46A358] duration-300"
-                onClick={(e) => setSize("Medium")}
+                onClick={() => setSize("Medium")}
               >
                 Medium
               </li>
               <li
                 className="cursor-pointer px-[30px] py-[15px] hover:text-[#46A358] duration-300"
-                onClick={(e) => setSize("Large")}
+                onClick={() => setSize("Large")}
               >
                 Large
               </li>
@@ -163,7 +163,7 @@ export default function Home() {
         </section>
         <div className="flex justify-end pr-[120px]">
           <Pagination
-            onClick={(e: React.MouseEvent<HTMLElement>) => setPage(2)}
+            onClick={() => setPage(2)}
             size="lg"
             color="success"
             initialPage={page}

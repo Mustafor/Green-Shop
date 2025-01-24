@@ -12,7 +12,7 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 
-const shoppingCard = () => {
+const ShoppingCard = () => {
   const [size, _setSize] = useState<string | null>(null);
   const [price, _setPrice] = useState<number[] | number>([39, 1230]);
   const [categoryName, _setCategoryName] = useState<string | null>(null);
@@ -371,4 +371,4 @@ const shoppingCard = () => {
   );
 };
 
-export default shoppingCard;
+export default ShoppingCard;
