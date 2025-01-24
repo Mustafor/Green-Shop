@@ -5,11 +5,11 @@ import debounce from "@/hook/useDebounce";
 import { ProductsType, getProducts } from "@/service/getProducts";
 import React, { useState } from "react";
 const Shop = () => {
-  const [size, _setSize] = useState<string | null>(null);
-  const [price, _setPrice] = useState<number[] | number>([39, 1230]);
-  const [categoryName, _setCategoryName] = useState<string | null>(null);
-  const [tags, _setTags] = useState<string | null>(null);
-  const [page, _setPage] = useState<number>(1);
+  const [size] = useState<string | null>(null);
+  const [price] = useState<number[] | number>([39, 1230]);
+  const [categoryName] = useState<string | null>(null);
+  const [tags] = useState<string | null>(null);
+  const [page] = useState<number>(1);
   const [_totalPage, setTotalPage] = useState(10);
   const fullPrice = debounce(price, 1000);
 
