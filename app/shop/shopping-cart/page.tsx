@@ -18,7 +18,7 @@ const ShoppingCard = () => {
   const [categoryName] = useState<string | null>(null);
   const [tags] = useState<string | null>(null);
   const [page] = useState<number>(1);
-  const [_, setTotalPage] = useState(10);
+  const [, setTotalPage] = useState(10);
   const fullPrice = debounce(price, 1000);
   const { token } = useContext(Context);
   const [isOpenModal, setLoginModal] = useState<boolean>(false);
