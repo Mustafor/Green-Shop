@@ -13,12 +13,12 @@ import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 
 const ShoppingCard = () => {
-  const [size, _setSize] = useState<string | null>(null);
-  const [price, _setPrice] = useState<number[] | number>([39, 1230]);
+  const [size] = useState<string | null>(null);
+  const [price] = useState<number[] | number>([39, 1230]);
   const [categoryName, _setCategoryName] = useState<string | null>(null);
-  const [tags, _setTags] = useState<string | null>(null);
-  const [page, _setPage] = useState<number>(1);
-  const [_totalPage, setTotalPage] = useState(10);
+  const [tags] = useState<string | null>(null);
+  const [page] = useState<number>(1);
+  const [_, setTotalPage] = useState(10);
   const fullPrice = debounce(price, 1000);
   const { token } = useContext(Context);
   const [isOpenModal, setLoginModal] = useState<boolean>(false);
