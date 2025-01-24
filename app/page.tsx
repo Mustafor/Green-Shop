@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import { Slider } from "@nextui-org/slider";
 import debounce from "@/hook/useDebounce";
 import Carusel from "@/components/Carusel/page";
+import Link from "next/link";
 
 export default function Home() {
   const [categoryName, setCategoryName] = useState<string | null>(null);
@@ -231,12 +232,12 @@ export default function Home() {
                 height={195}
               />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a
+                <Link
                   href="#"
                   className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300"
                 >
                   September 12 I Read in 6 minutes
-                </a>
+                </Link>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">
                   Cactus & Succulent Care Tips
                 </strong>
@@ -244,7 +245,7 @@ export default function Home() {
                   Cacti are succulents are easy care plants for any home or
                   patio.{" "}
                 </span>
-                <a
+                <Link
                   className="flex items-center hover:text-green-500 duration-300 gap-[3px]"
                   href="#"
                 >
@@ -252,7 +253,7 @@ export default function Home() {
                   <span className="mt-[6px]">
                     <RightIcon />
                   </span>
-                </a>
+                </Link>
               </div>
             </li>
             <li className="w-[368px] bg-[#FBFBFB] hover:shadow-2xl duration-300">
@@ -264,19 +265,19 @@ export default function Home() {
                 height={195}
               />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a
+                <Link
                   href="#"
                   className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300"
                 >
                   September 13 I Read in 2 minutes
-                </a>
+                </Link>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">
                   Top 10 Succulents for Your Home
                 </strong>
                 <span className="text-[14px] block text-[#727272] mb-[9px]">
                   Best in hanging baskets. Prefers medium to high light.
                 </span>
-                <a
+                <Link
                   className="flex items-center hover:text-green-500 duration-300 gap-[3px]"
                   href="#"
                 >
@@ -284,7 +285,7 @@ export default function Home() {
                   <span className="mt-[6px]">
                     <RightIcon />
                   </span>
-                </a>
+                </Link>
               </div>
             </li>
             <li className="w-[368px] bg-[#FBFBFB] hover:shadow-2xl duration-300">
@@ -296,12 +297,12 @@ export default function Home() {
                 height={195}
               />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a
+                <Link
                   href="#"
                   className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300"
                 >
                   September 15 I Read in 3 minutes
-                </a>
+                </Link>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">
                   Cacti & Succulent Care Tips
                 </strong>
@@ -309,7 +310,7 @@ export default function Home() {
                   Cacti and succulents thrive in containers and because most
                   are.{" "}
                 </span>
-                <a
+                <Link
                   className="flex items-center hover:text-green-500 duration-300 gap-[3px]"
                   href="#"
                 >
@@ -317,7 +318,7 @@ export default function Home() {
                   <span className="mt-[6px]">
                     <RightIcon />
                   </span>
-                </a>
+                </Link>
               </div>
             </li>
             <li className="w-[368px] bg-[#FBFBFB] hover:shadow-2xl duration-300">
@@ -329,19 +330,19 @@ export default function Home() {
                 height={195}
               />
               <div className="w-[242px] px-[12px] py-[8px]">
-                <a
+                <Link
                   href="#"
                   className="text-[14px] block text-[#46A358] mb-[4px] hover:text-black duration-300"
                 >
                   September 15 I Read in 2 minutes
-                </a>
+                </Link>
                 <strong className="text-[20px] block text-[#3D3D3D] font-bold mb-[4px]">
                   Best Houseplants Room by Room
                 </strong>
                 <span className="text-[14px] block text-[#727272] mb-[9px]">
                   The benefits of houseplants are endless. In addition to..{" "}
                 </span>
-                <a
+                <Link
                   className="flex items-center hover:text-green-500 duration-300 gap-[3px]"
                   href="#"
                 >
@@ -349,7 +350,7 @@ export default function Home() {
                   <span className="mt-[6px]">
                     <RightIcon />
                   </span>
-                </a>
+                </Link>
               </div>
             </li>
           </ul>

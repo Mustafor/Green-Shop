@@ -10,7 +10,7 @@ const Shop = () => {
   const [categoryName, _setCategoryName] = useState<string | null>(null)
   const [tags, _setTags] = useState<string | null>(null)
   const [page, _setPage] = useState<number>(1)
-  const [totalPage, setTotalPage] = useState(10)
+  const [_totalPage, setTotalPage] = useState(10)
   const fullPrice = debounce(price, 1000)
   
   const products: ProductsType[] = getProducts(categoryName, tags, page, setTotalPage, fullPrice, size)
