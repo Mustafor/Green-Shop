@@ -15,7 +15,7 @@ import React, { useContext, useEffect, useState } from "react";
 const ShoppingCard = () => {
   const [size] = useState<string | null>(null);
   const [price] = useState<number[] | number>([39, 1230]);
-  const [categoryName, _setCategoryName] = useState<string | null>(null);
+  const [categoryName] = useState<string | null>(null);
   const [tags] = useState<string | null>(null);
   const [page] = useState<number>(1);
   const [_, setTotalPage] = useState(10);
