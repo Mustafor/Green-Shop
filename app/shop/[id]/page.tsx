@@ -19,7 +19,7 @@ import { useParams, useRouter } from "next/navigation";
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
 
-const page = () => {
+const Page = () => {
   const { count, setCount, token, setIsBasket } = useContext(Context);
   const { id } = useParams();
   const router = useRouter();
@@ -200,4 +200,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
